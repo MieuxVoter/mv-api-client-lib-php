@@ -11,7 +11,7 @@ Method | HTTP request | Description
 ## `getMyself()`
 
 ```php
-getMyself()
+getMyself(): \MvApi\Model\User
 ```
 
 Gets information about the authenticating user.
@@ -39,7 +39,8 @@ $apiInstance = new MvApi\Api\LoginApi(
 );
 
 try {
-    $apiInstance->getMyself();
+    $result = $apiInstance->getMyself();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LoginApi->getMyself: ', $e->getMessage(), PHP_EOL;
 }
@@ -51,7 +52,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**\MvApi\Model\User**](../Model/User.md)
 
 ### Authorization
 
@@ -60,7 +61,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/ld+json`, `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -69,7 +70,7 @@ void (empty response body)
 ## `postCredentialsItem()`
 
 ```php
-postCredentialsItem($credentials)
+postCredentialsItem($credentials): \MvApi\Model\Token
 ```
 
 Returns an authentication Token from login Credentials.
@@ -98,7 +99,8 @@ $apiInstance = new MvApi\Api\LoginApi(
 $credentials = new \MvApi\Model\Credentials(); // \MvApi\Model\Credentials | User Credentials
 
 try {
-    $apiInstance->postCredentialsItem($credentials);
+    $result = $apiInstance->postCredentialsItem($credentials);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LoginApi->postCredentialsItem: ', $e->getMessage(), PHP_EOL;
 }
@@ -112,7 +114,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\MvApi\Model\Token**](../Model/Token.md)
 
 ### Authorization
 
@@ -121,7 +123,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: `application/ld+json`, `application/json`
-- **Accept**: Not defined
+- **Accept**: `application/ld+json`, `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

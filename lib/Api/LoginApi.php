@@ -123,11 +123,12 @@ class LoginApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \MvApi\Model\User
      */
     public function getMyself()
     {
-        $this->getMyselfWithHttpInfo();
+        list($response) = $this->getMyselfWithHttpInfo();
+        return $response;
     }
 
     /**
@@ -138,7 +139,7 @@ class LoginApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MvApi\Model\User, HTTP status code, HTTP response headers (array of strings)
      */
     public function getMyselfWithHttpInfo()
     {
@@ -179,10 +180,44 @@ class LoginApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    if ('\MvApi\Model\User' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\MvApi\Model\User', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\MvApi\Model\User';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\MvApi\Model\User',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -218,14 +253,24 @@ class LoginApi
      */
     public function getMyselfAsyncWithHttpInfo()
     {
-        $returnType = '';
+        $returnType = '\MvApi\Model\User';
         $request = $this->getMyselfRequest();
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -267,11 +312,11 @@ class LoginApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/ld+json', 'application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/ld+json', 'application/json'],
                 []
             );
         }
@@ -336,11 +381,12 @@ class LoginApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \MvApi\Model\Token
      */
     public function postCredentialsItem($credentials = null)
     {
-        $this->postCredentialsItemWithHttpInfo($credentials);
+        list($response) = $this->postCredentialsItemWithHttpInfo($credentials);
+        return $response;
     }
 
     /**
@@ -352,7 +398,7 @@ class LoginApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MvApi\Model\Token, HTTP status code, HTTP response headers (array of strings)
      */
     public function postCredentialsItemWithHttpInfo($credentials = null)
     {
@@ -393,10 +439,44 @@ class LoginApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    if ('\MvApi\Model\Token' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\MvApi\Model\Token', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\MvApi\Model\Token';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\MvApi\Model\Token',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -434,14 +514,24 @@ class LoginApi
      */
     public function postCredentialsItemAsyncWithHttpInfo($credentials = null)
     {
-        $returnType = '';
+        $returnType = '\MvApi\Model\Token';
         $request = $this->postCredentialsItemRequest($credentials);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -484,11 +574,11 @@ class LoginApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/ld+json', 'application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/ld+json', 'application/json'],
                 ['application/ld+json', 'application/json']
             );
         }

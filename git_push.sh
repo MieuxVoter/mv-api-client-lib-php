@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/env bash
 # ref: https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/
 #
-# Usage example: /bin/sh ./git_push.sh "" "" "" "" "minor update"
-# Usage example: /bin/sh ./git_push.sh gitlab.com wing328 openapi-petstore-perl main "minor update"
+# Usage example: /bin/bash ./git_push.sh "" "" "" "" "minor update"
+# Usage example: /bin/bash ./git_push.sh gitlab.com wing328 openapi-petstore-perl main "minor update"
 
 git_host=$1
 git_user_id=$2
@@ -50,6 +50,7 @@ git config user.name domi41
 git config user.email dominique.merle.41@gmail.com
 
 # Commits the tracked changes and prepares them to be pushed to a remote repository.
+# This won't effect anything if there is nothing staged to commit.
 git commit -m "$release_note"
 
 # Sets the new remote
