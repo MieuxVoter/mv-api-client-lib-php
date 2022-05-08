@@ -1,0 +1,42 @@
+{
+    "name": "MieuxVoter/mv-api-client-lib-php",
+    "description": "This is a **deliberation service** using **majority judgment** polling. It's **libre software** ([source](https://github.com/mieuxvoter)) made and maintained by [MieuxVoter.fr](https://mieuxvoter.fr). You're browsing the API documentation and sandbox.  ## Use one of the known clients  - https://cli.mieuxvoter.fr   ## Try it out the hard way  ### Create an account  You will need a user account to interact with polls. Head to **Registration** → `POST /users` below. Click _Try it out_, set your desired credentials, and execute the query. Scroll down to see the response.  ### Authenticate  Use your credentials in the **Login** → `POST /_jwt`, and the API will return a Json Web Token valid for one hour. Copy the token (not the whole response, and without quotes) in the field behind the `Authorize 🔒` button, prefixed by the word `Bearer `.  It should look like: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ…`  ### Create a poll  **Poll** → `POST /polls`  Here is an example of what you could send:  ``` {   \"slug\": \"france-presidence-2027\",   \"scope\": \"public\",   \"subject\": \"Présidentielle Française 2027\",   \"proposals\": [     {       \"title\": \"Continuer le néolibéralisme\"     },     {       \"title\": \"Ne pas prendre plus à la nature que ce qu'elle est capable de renouveler\"     },     {       \"title\": \"Former une Assemblée Constituante (Liquide)\"     }   ],   \"grades\": [     { \"name\": \"À Rejeter\", \"level\": 0 },     { \"name\": \"Insuffisant\", \"level\": 1 },     { \"name\": \"Passable\", \"level\": 2 },     { \"name\": \"Assez Bien\", \"level\": 3 },     { \"name\": \"Bien\", \"level\": 4 },     { \"name\": \"Très Bien\", \"level\": 5 },     { \"name\": \"Excellent\", \"level\": 6 }   ] } ```  Keep the response, you'll need the uuids.  ### Invite people to private polls  > TODO: document invitation generation  ### Submit judgments  **Ballot** → `POST /polls/{pollId}/proposals/{proposalId}/ballots`  One request per proposal, for now.  We plan on making an endpoint to submit them all at once.  ### Collect the results  **Result** → `GET /polls/{id}/result`  ## Use a generated client library  - for [php](https://github.com/MieuxVoter/mv-api-client-lib-php) - for [typescript](https://github.com/MieuxVoter/mv-api-client-lib-typescript) - …  There are clients we can generate for most languages. Get in touch if you'd like one in particular! Or clone this project and use `bin/generate-client.bash -t whatever`.",
+    "keywords": [
+        "majority",
+        "judgment",
+        "poll",
+        "vote",
+        "openapitools",
+        "openapi-generator",
+        "openapi",
+        "php",
+        "sdk",
+        "rest",
+        "api"
+    ],
+    "homepage": "https://mieuxvoter.fr",
+    "license": "AGPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "MieuxVoter.fr",
+            "homepage": "https://mieuxvoter.fr"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0 || ^9.0",
+        "friendsofphp/php-cs-fixer": "^2.12"
+    },
+    "autoload": {
+        "psr-4": { "MvApi\\" : "lib/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "MvApi\\" : "test/" }
+    }
+}
