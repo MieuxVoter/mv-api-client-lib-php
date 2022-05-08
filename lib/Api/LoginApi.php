@@ -123,7 +123,7 @@ class LoginApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MvApi\Model\User
+     * @return \MvApi\Model\UserRead
      */
     public function getMyself()
     {
@@ -139,7 +139,7 @@ class LoginApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MvApi\Model\User, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MvApi\Model\UserRead, HTTP status code, HTTP response headers (array of strings)
      */
     public function getMyselfWithHttpInfo()
     {
@@ -182,20 +182,20 @@ class LoginApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MvApi\Model\User' === '\SplFileObject') {
+                    if ('\MvApi\Model\UserRead' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MvApi\Model\User', []),
+                        ObjectSerializer::deserialize($content, '\MvApi\Model\UserRead', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\MvApi\Model\User';
+            $returnType = '\MvApi\Model\UserRead';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -213,7 +213,7 @@ class LoginApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MvApi\Model\User',
+                        '\MvApi\Model\UserRead',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -253,7 +253,7 @@ class LoginApi
      */
     public function getMyselfAsyncWithHttpInfo()
     {
-        $returnType = '\MvApi\Model\User';
+        $returnType = '\MvApi\Model\UserRead';
         $request = $this->getMyselfRequest();
 
         return $this->client

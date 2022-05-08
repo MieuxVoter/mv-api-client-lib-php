@@ -11,7 +11,7 @@ Method | HTTP request | Description
 ## `getMyself()`
 
 ```php
-getMyself(): \MvApi\Model\User
+getMyself(): \MvApi\Model\UserRead
 ```
 
 Gets information about the authenticating user.
@@ -52,7 +52,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\MvApi\Model\User**](../Model/User.md)
+[**\MvApi\Model\UserRead**](../Model/UserRead.md)
 
 ### Authorization
 
