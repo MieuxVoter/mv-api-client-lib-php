@@ -347,11 +347,11 @@ class PollApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', 'application/ld+json']
+                ['application/json', 'application/ld+json', 'text/html']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json', 'application/ld+json'],
+                ['application/json', 'application/ld+json', 'text/html'],
                 []
             );
         }
@@ -639,11 +639,11 @@ class PollApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', 'application/ld+json']
+                ['application/json', 'application/ld+json', 'text/html']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json', 'application/ld+json'],
+                ['application/json', 'application/ld+json', 'text/html'],
                 []
             );
         }
@@ -1146,11 +1146,11 @@ class PollApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', 'application/ld+json']
+                ['application/json', 'application/ld+json', 'text/html']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json', 'application/ld+json'],
+                ['application/json', 'application/ld+json', 'text/html'],
                 []
             );
         }
@@ -1419,11 +1419,11 @@ class PollApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', 'application/ld+json']
+                ['application/json', 'application/ld+json', 'text/html']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json', 'application/ld+json'],
+                ['application/json', 'application/ld+json', 'text/html'],
                 []
             );
         }
@@ -1695,11 +1695,11 @@ class PollApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', 'application/ld+json']
+                ['application/json', 'application/ld+json', 'text/html']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json', 'application/ld+json'],
+                ['application/json', 'application/ld+json', 'text/html'],
                 []
             );
         }
@@ -1957,12 +1957,12 @@ class PollApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', 'application/ld+json']
+                ['application/json', 'application/ld+json', 'text/html']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json', 'application/ld+json'],
-                ['application/json', 'application/ld+json']
+                ['application/json', 'application/ld+json', 'text/html'],
+                ['application/json', 'application/ld+json', 'text/html']
             );
         }
 

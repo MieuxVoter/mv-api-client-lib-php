@@ -104,11 +104,11 @@ To install the bindings via [Composer](https://getcomposer.org/), add the follow
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/MieuxVoter/mv-api-client-lib-php.git"
+      "url": "https://github.com/mieuxvoter/mv-api-client-lib-php.git"
     }
   ],
   "require": {
-    "MieuxVoter/mv-api-client-lib-php": "*@dev"
+    "mieuxvoter/mv-api-client-lib-php": "*@dev"
   }
 }
 ```
