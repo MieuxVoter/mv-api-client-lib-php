@@ -126,7 +126,7 @@ class BallotApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MvApi\Model\InlineResponse2004
+     * @return \MvApi\Model\Ballot[]
      */
     public function apiPollsProposalsBallotsGetSubresource($poll_id, $proposal_id, $page = 1)
     {
@@ -145,7 +145,7 @@ class BallotApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MvApi\Model\InlineResponse2004, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MvApi\Model\Ballot[], HTTP status code, HTTP response headers (array of strings)
      */
     public function apiPollsProposalsBallotsGetSubresourceWithHttpInfo($poll_id, $proposal_id, $page = 1)
     {
@@ -188,20 +188,20 @@ class BallotApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MvApi\Model\InlineResponse2004' === '\SplFileObject') {
+                    if ('\MvApi\Model\Ballot[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MvApi\Model\InlineResponse2004', []),
+                        ObjectSerializer::deserialize($content, '\MvApi\Model\Ballot[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\MvApi\Model\InlineResponse2004';
+            $returnType = '\MvApi\Model\Ballot[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -219,7 +219,7 @@ class BallotApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MvApi\Model\InlineResponse2004',
+                        '\MvApi\Model\Ballot[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -265,7 +265,7 @@ class BallotApi
      */
     public function apiPollsProposalsBallotsGetSubresourceAsyncWithHttpInfo($poll_id, $proposal_id, $page = 1)
     {
-        $returnType = '\MvApi\Model\InlineResponse2004';
+        $returnType = '\MvApi\Model\Ballot[]';
         $request = $this->apiPollsProposalsBallotsGetSubresourceRequest($poll_id, $proposal_id, $page);
 
         return $this->client
@@ -366,11 +366,11 @@ class BallotApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/ld+json', 'application/json', 'text/html']
+                ['application/json', 'application/ld+json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/ld+json', 'application/json', 'text/html'],
+                ['application/json', 'application/ld+json'],
                 []
             );
         }
@@ -436,7 +436,7 @@ class BallotApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MvApi\Model\InlineResponse2004
+     * @return \MvApi\Model\Ballot[]
      */
     public function apiProposalsBallotsGetSubresource($id, $page = 1)
     {
@@ -454,7 +454,7 @@ class BallotApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MvApi\Model\InlineResponse2004, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MvApi\Model\Ballot[], HTTP status code, HTTP response headers (array of strings)
      */
     public function apiProposalsBallotsGetSubresourceWithHttpInfo($id, $page = 1)
     {
@@ -497,20 +497,20 @@ class BallotApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MvApi\Model\InlineResponse2004' === '\SplFileObject') {
+                    if ('\MvApi\Model\Ballot[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MvApi\Model\InlineResponse2004', []),
+                        ObjectSerializer::deserialize($content, '\MvApi\Model\Ballot[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\MvApi\Model\InlineResponse2004';
+            $returnType = '\MvApi\Model\Ballot[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -528,7 +528,7 @@ class BallotApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MvApi\Model\InlineResponse2004',
+                        '\MvApi\Model\Ballot[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -572,7 +572,7 @@ class BallotApi
      */
     public function apiProposalsBallotsGetSubresourceAsyncWithHttpInfo($id, $page = 1)
     {
-        $returnType = '\MvApi\Model\InlineResponse2004';
+        $returnType = '\MvApi\Model\Ballot[]';
         $request = $this->apiProposalsBallotsGetSubresourceRequest($id, $page);
 
         return $this->client
@@ -658,11 +658,11 @@ class BallotApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/ld+json', 'application/json', 'text/html']
+                ['application/json', 'application/ld+json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/ld+json', 'application/json', 'text/html'],
+                ['application/json', 'application/ld+json'],
                 []
             );
         }
@@ -958,7 +958,7 @@ class BallotApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MvApi\Model\BallotJsonldRead
+     * @return \MvApi\Model\BallotRead
      */
     public function getBallotItem($id)
     {
@@ -975,7 +975,7 @@ class BallotApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MvApi\Model\BallotJsonldRead, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MvApi\Model\BallotRead, HTTP status code, HTTP response headers (array of strings)
      */
     public function getBallotItemWithHttpInfo($id)
     {
@@ -1018,20 +1018,20 @@ class BallotApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MvApi\Model\BallotJsonldRead' === '\SplFileObject') {
+                    if ('\MvApi\Model\BallotRead' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MvApi\Model\BallotJsonldRead', []),
+                        ObjectSerializer::deserialize($content, '\MvApi\Model\BallotRead', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\MvApi\Model\BallotJsonldRead';
+            $returnType = '\MvApi\Model\BallotRead';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1049,7 +1049,7 @@ class BallotApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MvApi\Model\BallotJsonldRead',
+                        '\MvApi\Model\BallotRead',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1091,7 +1091,7 @@ class BallotApi
      */
     public function getBallotItemAsyncWithHttpInfo($id)
     {
-        $returnType = '\MvApi\Model\BallotJsonldRead';
+        $returnType = '\MvApi\Model\BallotRead';
         $request = $this->getBallotItemRequest($id);
 
         return $this->client
@@ -1165,11 +1165,11 @@ class BallotApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/ld+json', 'application/json', 'text/html']
+                ['application/json', 'application/ld+json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/ld+json', 'application/json', 'text/html'],
+                ['application/json', 'application/ld+json'],
                 []
             );
         }
@@ -1232,15 +1232,15 @@ class BallotApi
      *
      * @param  string $poll_id Universally Unique IDentifier of the poll whose proposal we are judging. (required)
      * @param  string $proposal_id Universally Unique IDentifier of the proposal we are judging. (required)
-     * @param  \MvApi\Model\BallotJsonldCreate $ballot_jsonld_create The new Ballot resource (optional)
+     * @param  \MvApi\Model\BallotCreate $ballot_create The new Ballot resource (optional)
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MvApi\Model\BallotJsonldCreated
+     * @return \MvApi\Model\BallotCreated
      */
-    public function postBallotCollection($poll_id, $proposal_id, $ballot_jsonld_create = null)
+    public function postBallotCollection($poll_id, $proposal_id, $ballot_create = null)
     {
-        list($response) = $this->postBallotCollectionWithHttpInfo($poll_id, $proposal_id, $ballot_jsonld_create);
+        list($response) = $this->postBallotCollectionWithHttpInfo($poll_id, $proposal_id, $ballot_create);
         return $response;
     }
 
@@ -1251,15 +1251,15 @@ class BallotApi
      *
      * @param  string $poll_id Universally Unique IDentifier of the poll whose proposal we are judging. (required)
      * @param  string $proposal_id Universally Unique IDentifier of the proposal we are judging. (required)
-     * @param  \MvApi\Model\BallotJsonldCreate $ballot_jsonld_create The new Ballot resource (optional)
+     * @param  \MvApi\Model\BallotCreate $ballot_create The new Ballot resource (optional)
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MvApi\Model\BallotJsonldCreated, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MvApi\Model\BallotCreated, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postBallotCollectionWithHttpInfo($poll_id, $proposal_id, $ballot_jsonld_create = null)
+    public function postBallotCollectionWithHttpInfo($poll_id, $proposal_id, $ballot_create = null)
     {
-        $request = $this->postBallotCollectionRequest($poll_id, $proposal_id, $ballot_jsonld_create);
+        $request = $this->postBallotCollectionRequest($poll_id, $proposal_id, $ballot_create);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1298,20 +1298,20 @@ class BallotApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\MvApi\Model\BallotJsonldCreated' === '\SplFileObject') {
+                    if ('\MvApi\Model\BallotCreated' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MvApi\Model\BallotJsonldCreated', []),
+                        ObjectSerializer::deserialize($content, '\MvApi\Model\BallotCreated', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\MvApi\Model\BallotJsonldCreated';
+            $returnType = '\MvApi\Model\BallotCreated';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1329,7 +1329,7 @@ class BallotApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MvApi\Model\BallotJsonldCreated',
+                        '\MvApi\Model\BallotCreated',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1346,14 +1346,14 @@ class BallotApi
      *
      * @param  string $poll_id Universally Unique IDentifier of the poll whose proposal we are judging. (required)
      * @param  string $proposal_id Universally Unique IDentifier of the proposal we are judging. (required)
-     * @param  \MvApi\Model\BallotJsonldCreate $ballot_jsonld_create The new Ballot resource (optional)
+     * @param  \MvApi\Model\BallotCreate $ballot_create The new Ballot resource (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postBallotCollectionAsync($poll_id, $proposal_id, $ballot_jsonld_create = null)
+    public function postBallotCollectionAsync($poll_id, $proposal_id, $ballot_create = null)
     {
-        return $this->postBallotCollectionAsyncWithHttpInfo($poll_id, $proposal_id, $ballot_jsonld_create)
+        return $this->postBallotCollectionAsyncWithHttpInfo($poll_id, $proposal_id, $ballot_create)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1368,15 +1368,15 @@ class BallotApi
      *
      * @param  string $poll_id Universally Unique IDentifier of the poll whose proposal we are judging. (required)
      * @param  string $proposal_id Universally Unique IDentifier of the proposal we are judging. (required)
-     * @param  \MvApi\Model\BallotJsonldCreate $ballot_jsonld_create The new Ballot resource (optional)
+     * @param  \MvApi\Model\BallotCreate $ballot_create The new Ballot resource (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postBallotCollectionAsyncWithHttpInfo($poll_id, $proposal_id, $ballot_jsonld_create = null)
+    public function postBallotCollectionAsyncWithHttpInfo($poll_id, $proposal_id, $ballot_create = null)
     {
-        $returnType = '\MvApi\Model\BallotJsonldCreated';
-        $request = $this->postBallotCollectionRequest($poll_id, $proposal_id, $ballot_jsonld_create);
+        $returnType = '\MvApi\Model\BallotCreated';
+        $request = $this->postBallotCollectionRequest($poll_id, $proposal_id, $ballot_create);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1416,12 +1416,12 @@ class BallotApi
      *
      * @param  string $poll_id Universally Unique IDentifier of the poll whose proposal we are judging. (required)
      * @param  string $proposal_id Universally Unique IDentifier of the proposal we are judging. (required)
-     * @param  \MvApi\Model\BallotJsonldCreate $ballot_jsonld_create The new Ballot resource (optional)
+     * @param  \MvApi\Model\BallotCreate $ballot_create The new Ballot resource (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postBallotCollectionRequest($poll_id, $proposal_id, $ballot_jsonld_create = null)
+    public function postBallotCollectionRequest($poll_id, $proposal_id, $ballot_create = null)
     {
         // verify the required parameter 'poll_id' is set
         if ($poll_id === null || (is_array($poll_id) && count($poll_id) === 0)) {
@@ -1465,21 +1465,21 @@ class BallotApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/ld+json', 'application/json', 'text/html']
+                ['application/json', 'application/ld+json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/ld+json', 'application/json', 'text/html'],
-                ['application/ld+json', 'application/json', 'text/html']
+                ['application/json', 'application/ld+json'],
+                ['application/json', 'application/ld+json']
             );
         }
 
         // for model (json/xml)
-        if (isset($ballot_jsonld_create)) {
+        if (isset($ballot_create)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($ballot_jsonld_create));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($ballot_create));
             } else {
-                $httpBody = $ballot_jsonld_create;
+                $httpBody = $ballot_create;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

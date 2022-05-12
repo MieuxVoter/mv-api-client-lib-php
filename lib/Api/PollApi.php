@@ -125,7 +125,7 @@ class PollApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MvApi\Model\InlineResponse2002
+     * @return \MvApi\Model\GradeRead[]
      */
     public function apiPollsGradesGetSubresource($id, $page = 1)
     {
@@ -143,7 +143,7 @@ class PollApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MvApi\Model\InlineResponse2002, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MvApi\Model\GradeRead[], HTTP status code, HTTP response headers (array of strings)
      */
     public function apiPollsGradesGetSubresourceWithHttpInfo($id, $page = 1)
     {
@@ -186,20 +186,20 @@ class PollApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MvApi\Model\InlineResponse2002' === '\SplFileObject') {
+                    if ('\MvApi\Model\GradeRead[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MvApi\Model\InlineResponse2002', []),
+                        ObjectSerializer::deserialize($content, '\MvApi\Model\GradeRead[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\MvApi\Model\InlineResponse2002';
+            $returnType = '\MvApi\Model\GradeRead[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -217,7 +217,7 @@ class PollApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MvApi\Model\InlineResponse2002',
+                        '\MvApi\Model\GradeRead[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -261,7 +261,7 @@ class PollApi
      */
     public function apiPollsGradesGetSubresourceAsyncWithHttpInfo($id, $page = 1)
     {
-        $returnType = '\MvApi\Model\InlineResponse2002';
+        $returnType = '\MvApi\Model\GradeRead[]';
         $request = $this->apiPollsGradesGetSubresourceRequest($id, $page);
 
         return $this->client
@@ -347,11 +347,11 @@ class PollApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/ld+json', 'application/json', 'text/html']
+                ['application/json', 'application/ld+json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/ld+json', 'application/json', 'text/html'],
+                ['application/json', 'application/ld+json'],
                 []
             );
         }
@@ -417,7 +417,7 @@ class PollApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MvApi\Model\InlineResponse2003
+     * @return \MvApi\Model\ProposalRead[]
      */
     public function apiPollsProposalsGetSubresource($id, $page = 1)
     {
@@ -435,7 +435,7 @@ class PollApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MvApi\Model\InlineResponse2003, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MvApi\Model\ProposalRead[], HTTP status code, HTTP response headers (array of strings)
      */
     public function apiPollsProposalsGetSubresourceWithHttpInfo($id, $page = 1)
     {
@@ -478,20 +478,20 @@ class PollApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MvApi\Model\InlineResponse2003' === '\SplFileObject') {
+                    if ('\MvApi\Model\ProposalRead[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MvApi\Model\InlineResponse2003', []),
+                        ObjectSerializer::deserialize($content, '\MvApi\Model\ProposalRead[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\MvApi\Model\InlineResponse2003';
+            $returnType = '\MvApi\Model\ProposalRead[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -509,7 +509,7 @@ class PollApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MvApi\Model\InlineResponse2003',
+                        '\MvApi\Model\ProposalRead[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -553,7 +553,7 @@ class PollApi
      */
     public function apiPollsProposalsGetSubresourceAsyncWithHttpInfo($id, $page = 1)
     {
-        $returnType = '\MvApi\Model\InlineResponse2003';
+        $returnType = '\MvApi\Model\ProposalRead[]';
         $request = $this->apiPollsProposalsGetSubresourceRequest($id, $page);
 
         return $this->client
@@ -639,11 +639,11 @@ class PollApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/ld+json', 'application/json', 'text/html']
+                ['application/json', 'application/ld+json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/ld+json', 'application/json', 'text/html'],
+                ['application/json', 'application/ld+json'],
                 []
             );
         }
@@ -939,7 +939,7 @@ class PollApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MvApi\Model\ResultJsonldRead
+     * @return \MvApi\Model\ResultRead
      */
     public function getForPollResultItem($id)
     {
@@ -956,7 +956,7 @@ class PollApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MvApi\Model\ResultJsonldRead, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MvApi\Model\ResultRead, HTTP status code, HTTP response headers (array of strings)
      */
     public function getForPollResultItemWithHttpInfo($id)
     {
@@ -999,20 +999,20 @@ class PollApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MvApi\Model\ResultJsonldRead' === '\SplFileObject') {
+                    if ('\MvApi\Model\ResultRead' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MvApi\Model\ResultJsonldRead', []),
+                        ObjectSerializer::deserialize($content, '\MvApi\Model\ResultRead', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\MvApi\Model\ResultJsonldRead';
+            $returnType = '\MvApi\Model\ResultRead';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1030,7 +1030,7 @@ class PollApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MvApi\Model\ResultJsonldRead',
+                        '\MvApi\Model\ResultRead',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1072,7 +1072,7 @@ class PollApi
      */
     public function getForPollResultItemAsyncWithHttpInfo($id)
     {
-        $returnType = '\MvApi\Model\ResultJsonldRead';
+        $returnType = '\MvApi\Model\ResultRead';
         $request = $this->getForPollResultItemRequest($id);
 
         return $this->client
@@ -1146,11 +1146,11 @@ class PollApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/ld+json', 'application/json', 'text/html']
+                ['application/json', 'application/ld+json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/ld+json', 'application/json', 'text/html'],
+                ['application/json', 'application/ld+json'],
                 []
             );
         }
@@ -1215,7 +1215,7 @@ class PollApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MvApi\Model\InlineResponse2001
+     * @return \MvApi\Model\PollRead[]
      */
     public function getPollCollection($page = 1)
     {
@@ -1232,7 +1232,7 @@ class PollApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MvApi\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MvApi\Model\PollRead[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getPollCollectionWithHttpInfo($page = 1)
     {
@@ -1275,20 +1275,20 @@ class PollApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MvApi\Model\InlineResponse2001' === '\SplFileObject') {
+                    if ('\MvApi\Model\PollRead[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MvApi\Model\InlineResponse2001', []),
+                        ObjectSerializer::deserialize($content, '\MvApi\Model\PollRead[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\MvApi\Model\InlineResponse2001';
+            $returnType = '\MvApi\Model\PollRead[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1306,7 +1306,7 @@ class PollApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MvApi\Model\InlineResponse2001',
+                        '\MvApi\Model\PollRead[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1348,7 +1348,7 @@ class PollApi
      */
     public function getPollCollectionAsyncWithHttpInfo($page = 1)
     {
-        $returnType = '\MvApi\Model\InlineResponse2001';
+        $returnType = '\MvApi\Model\PollRead[]';
         $request = $this->getPollCollectionRequest($page);
 
         return $this->client
@@ -1419,11 +1419,11 @@ class PollApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/ld+json', 'application/json', 'text/html']
+                ['application/json', 'application/ld+json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/ld+json', 'application/json', 'text/html'],
+                ['application/json', 'application/ld+json'],
                 []
             );
         }
@@ -1488,7 +1488,7 @@ class PollApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MvApi\Model\PollJsonldRead
+     * @return \MvApi\Model\PollRead
      */
     public function getPollItem($id)
     {
@@ -1505,7 +1505,7 @@ class PollApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MvApi\Model\PollJsonldRead, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MvApi\Model\PollRead, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPollItemWithHttpInfo($id)
     {
@@ -1548,20 +1548,20 @@ class PollApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MvApi\Model\PollJsonldRead' === '\SplFileObject') {
+                    if ('\MvApi\Model\PollRead' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MvApi\Model\PollJsonldRead', []),
+                        ObjectSerializer::deserialize($content, '\MvApi\Model\PollRead', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\MvApi\Model\PollJsonldRead';
+            $returnType = '\MvApi\Model\PollRead';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1579,7 +1579,7 @@ class PollApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MvApi\Model\PollJsonldRead',
+                        '\MvApi\Model\PollRead',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1621,7 +1621,7 @@ class PollApi
      */
     public function getPollItemAsyncWithHttpInfo($id)
     {
-        $returnType = '\MvApi\Model\PollJsonldRead';
+        $returnType = '\MvApi\Model\PollRead';
         $request = $this->getPollItemRequest($id);
 
         return $this->client
@@ -1695,11 +1695,11 @@ class PollApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/ld+json', 'application/json', 'text/html']
+                ['application/json', 'application/ld+json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/ld+json', 'application/json', 'text/html'],
+                ['application/json', 'application/ld+json'],
                 []
             );
         }
@@ -1760,15 +1760,15 @@ class PollApi
      *
      * Creates a Poll resource.
      *
-     * @param  \MvApi\Model\PollJsonldCreate $poll_jsonld_create The new Poll resource (optional)
+     * @param  \MvApi\Model\PollCreate $poll_create The new Poll resource (optional)
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MvApi\Model\PollJsonldRead
+     * @return \MvApi\Model\PollRead
      */
-    public function postPollCollection($poll_jsonld_create = null)
+    public function postPollCollection($poll_create = null)
     {
-        list($response) = $this->postPollCollectionWithHttpInfo($poll_jsonld_create);
+        list($response) = $this->postPollCollectionWithHttpInfo($poll_create);
         return $response;
     }
 
@@ -1777,15 +1777,15 @@ class PollApi
      *
      * Creates a Poll resource.
      *
-     * @param  \MvApi\Model\PollJsonldCreate $poll_jsonld_create The new Poll resource (optional)
+     * @param  \MvApi\Model\PollCreate $poll_create The new Poll resource (optional)
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MvApi\Model\PollJsonldRead, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MvApi\Model\PollRead, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postPollCollectionWithHttpInfo($poll_jsonld_create = null)
+    public function postPollCollectionWithHttpInfo($poll_create = null)
     {
-        $request = $this->postPollCollectionRequest($poll_jsonld_create);
+        $request = $this->postPollCollectionRequest($poll_create);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1824,20 +1824,20 @@ class PollApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\MvApi\Model\PollJsonldRead' === '\SplFileObject') {
+                    if ('\MvApi\Model\PollRead' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MvApi\Model\PollJsonldRead', []),
+                        ObjectSerializer::deserialize($content, '\MvApi\Model\PollRead', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\MvApi\Model\PollJsonldRead';
+            $returnType = '\MvApi\Model\PollRead';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1855,7 +1855,7 @@ class PollApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MvApi\Model\PollJsonldRead',
+                        '\MvApi\Model\PollRead',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1870,14 +1870,14 @@ class PollApi
      *
      * Creates a Poll resource.
      *
-     * @param  \MvApi\Model\PollJsonldCreate $poll_jsonld_create The new Poll resource (optional)
+     * @param  \MvApi\Model\PollCreate $poll_create The new Poll resource (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postPollCollectionAsync($poll_jsonld_create = null)
+    public function postPollCollectionAsync($poll_create = null)
     {
-        return $this->postPollCollectionAsyncWithHttpInfo($poll_jsonld_create)
+        return $this->postPollCollectionAsyncWithHttpInfo($poll_create)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1890,15 +1890,15 @@ class PollApi
      *
      * Creates a Poll resource.
      *
-     * @param  \MvApi\Model\PollJsonldCreate $poll_jsonld_create The new Poll resource (optional)
+     * @param  \MvApi\Model\PollCreate $poll_create The new Poll resource (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postPollCollectionAsyncWithHttpInfo($poll_jsonld_create = null)
+    public function postPollCollectionAsyncWithHttpInfo($poll_create = null)
     {
-        $returnType = '\MvApi\Model\PollJsonldRead';
-        $request = $this->postPollCollectionRequest($poll_jsonld_create);
+        $returnType = '\MvApi\Model\PollRead';
+        $request = $this->postPollCollectionRequest($poll_create);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1936,12 +1936,12 @@ class PollApi
     /**
      * Create request for operation 'postPollCollection'
      *
-     * @param  \MvApi\Model\PollJsonldCreate $poll_jsonld_create The new Poll resource (optional)
+     * @param  \MvApi\Model\PollCreate $poll_create The new Poll resource (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postPollCollectionRequest($poll_jsonld_create = null)
+    public function postPollCollectionRequest($poll_create = null)
     {
 
         $resourcePath = '/polls';
@@ -1957,21 +1957,21 @@ class PollApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/ld+json', 'application/json', 'text/html']
+                ['application/json', 'application/ld+json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/ld+json', 'application/json', 'text/html'],
-                ['application/ld+json', 'application/json', 'text/html']
+                ['application/json', 'application/ld+json'],
+                ['application/json', 'application/ld+json']
             );
         }
 
         // for model (json/xml)
-        if (isset($poll_jsonld_create)) {
+        if (isset($poll_create)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($poll_jsonld_create));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($poll_create));
             } else {
-                $httpBody = $poll_jsonld_create;
+                $httpBody = $poll_create;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

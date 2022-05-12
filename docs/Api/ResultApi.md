@@ -10,7 +10,7 @@ Method | HTTP request | Description
 ## `getForPollResultItem()`
 
 ```php
-getForPollResultItem($id): \MvApi\Model\ResultJsonldRead
+getForPollResultItem($id): \MvApi\Model\ResultRead
 ```
 
 Gets the result of a poll
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MvApi\Model\ResultJsonldRead**](../Model/ResultJsonldRead.md)
+[**\MvApi\Model\ResultRead**](../Model/ResultRead.md)
 
 ### Authorization
 
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/ld+json`, `application/json`, `text/html`
+- **Accept**: `application/json`, `application/ld+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

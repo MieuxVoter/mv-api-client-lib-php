@@ -14,7 +14,7 @@ Method | HTTP request | Description
 ## `apiPollsProposalsBallotsGetSubresource()`
 
 ```php
-apiPollsProposalsBallotsGetSubresource($poll_id, $proposal_id, $page): \MvApi\Model\InlineResponse2004
+apiPollsProposalsBallotsGetSubresource($poll_id, $proposal_id, $page): \MvApi\Model\Ballot[]
 ```
 
 Retrieves the collection of Ballot resources.
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MvApi\Model\InlineResponse2004**](../Model/InlineResponse2004.md)
+[**\MvApi\Model\Ballot[]**](../Model/Ballot.md)
 
 ### Authorization
 
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/ld+json`, `application/json`, `text/html`
+- **Accept**: `application/json`, `application/ld+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 ## `apiProposalsBallotsGetSubresource()`
 
 ```php
-apiProposalsBallotsGetSubresource($id, $page): \MvApi\Model\InlineResponse2004
+apiProposalsBallotsGetSubresource($id, $page): \MvApi\Model\Ballot[]
 ```
 
 Retrieves the collection of Ballot resources.
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MvApi\Model\InlineResponse2004**](../Model/InlineResponse2004.md)
+[**\MvApi\Model\Ballot[]**](../Model/Ballot.md)
 
 ### Authorization
 
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/ld+json`, `application/json`, `text/html`
+- **Accept**: `application/json`, `application/ld+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -199,7 +199,7 @@ void (empty response body)
 ## `getBallotItem()`
 
 ```php
-getBallotItem($id): \MvApi\Model\BallotJsonldRead
+getBallotItem($id): \MvApi\Model\BallotRead
 ```
 
 Retrieves a Ballot resource.
@@ -243,7 +243,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MvApi\Model\BallotJsonldRead**](../Model/BallotJsonldRead.md)
+[**\MvApi\Model\BallotRead**](../Model/BallotRead.md)
 
 ### Authorization
 
@@ -252,7 +252,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/ld+json`, `application/json`, `text/html`
+- **Accept**: `application/json`, `application/ld+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -261,7 +261,7 @@ Name | Type | Description  | Notes
 ## `postBallotCollection()`
 
 ```php
-postBallotCollection($poll_id, $proposal_id, $ballot_jsonld_create): \MvApi\Model\BallotJsonldCreated
+postBallotCollection($poll_id, $proposal_id, $ballot_create): \MvApi\Model\BallotCreated
 ```
 
 Creates a Ballot resource.
@@ -287,10 +287,10 @@ $apiInstance = new MvApi\Api\BallotApi(
 );
 $poll_id = ed8c2754-4220-4f54-94e9-5e86982e85ac; // string | Universally Unique IDentifier of the poll whose proposal we are judging.
 $proposal_id = 368bd23a-6f19-4d8a-bb21-ff168ae2efc6; // string | Universally Unique IDentifier of the proposal we are judging.
-$ballot_jsonld_create = new \MvApi\Model\BallotJsonldCreate(); // \MvApi\Model\BallotJsonldCreate | The new Ballot resource
+$ballot_create = new \MvApi\Model\BallotCreate(); // \MvApi\Model\BallotCreate | The new Ballot resource
 
 try {
-    $result = $apiInstance->postBallotCollection($poll_id, $proposal_id, $ballot_jsonld_create);
+    $result = $apiInstance->postBallotCollection($poll_id, $proposal_id, $ballot_create);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BallotApi->postBallotCollection: ', $e->getMessage(), PHP_EOL;
@@ -303,11 +303,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **poll_id** | **string**| Universally Unique IDentifier of the poll whose proposal we are judging. |
  **proposal_id** | **string**| Universally Unique IDentifier of the proposal we are judging. |
- **ballot_jsonld_create** | [**\MvApi\Model\BallotJsonldCreate**](../Model/BallotJsonldCreate.md)| The new Ballot resource | [optional]
+ **ballot_create** | [**\MvApi\Model\BallotCreate**](../Model/BallotCreate.md)| The new Ballot resource | [optional]
 
 ### Return type
 
-[**\MvApi\Model\BallotJsonldCreated**](../Model/BallotJsonldCreated.md)
+[**\MvApi\Model\BallotCreated**](../Model/BallotCreated.md)
 
 ### Authorization
 
@@ -315,8 +315,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: `application/ld+json`, `application/json`, `text/html`
-- **Accept**: `application/ld+json`, `application/json`, `text/html`
+- **Content-Type**: `application/json`, `application/ld+json`
+- **Accept**: `application/json`, `application/ld+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

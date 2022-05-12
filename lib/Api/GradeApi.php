@@ -125,7 +125,7 @@ class GradeApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MvApi\Model\InlineResponse2002
+     * @return \MvApi\Model\GradeRead[]
      */
     public function apiPollsGradesGetSubresource($id, $page = 1)
     {
@@ -143,7 +143,7 @@ class GradeApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MvApi\Model\InlineResponse2002, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MvApi\Model\GradeRead[], HTTP status code, HTTP response headers (array of strings)
      */
     public function apiPollsGradesGetSubresourceWithHttpInfo($id, $page = 1)
     {
@@ -186,20 +186,20 @@ class GradeApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MvApi\Model\InlineResponse2002' === '\SplFileObject') {
+                    if ('\MvApi\Model\GradeRead[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MvApi\Model\InlineResponse2002', []),
+                        ObjectSerializer::deserialize($content, '\MvApi\Model\GradeRead[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\MvApi\Model\InlineResponse2002';
+            $returnType = '\MvApi\Model\GradeRead[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -217,7 +217,7 @@ class GradeApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MvApi\Model\InlineResponse2002',
+                        '\MvApi\Model\GradeRead[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -261,7 +261,7 @@ class GradeApi
      */
     public function apiPollsGradesGetSubresourceAsyncWithHttpInfo($id, $page = 1)
     {
-        $returnType = '\MvApi\Model\InlineResponse2002';
+        $returnType = '\MvApi\Model\GradeRead[]';
         $request = $this->apiPollsGradesGetSubresourceRequest($id, $page);
 
         return $this->client
@@ -347,11 +347,11 @@ class GradeApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/ld+json', 'application/json', 'text/html']
+                ['application/json', 'application/ld+json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/ld+json', 'application/json', 'text/html'],
+                ['application/json', 'application/ld+json'],
                 []
             );
         }
@@ -416,7 +416,7 @@ class GradeApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MvApi\Model\GradeJsonldRead
+     * @return \MvApi\Model\GradeRead
      */
     public function getGradeItem($id)
     {
@@ -433,7 +433,7 @@ class GradeApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MvApi\Model\GradeJsonldRead, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MvApi\Model\GradeRead, HTTP status code, HTTP response headers (array of strings)
      */
     public function getGradeItemWithHttpInfo($id)
     {
@@ -476,20 +476,20 @@ class GradeApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MvApi\Model\GradeJsonldRead' === '\SplFileObject') {
+                    if ('\MvApi\Model\GradeRead' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MvApi\Model\GradeJsonldRead', []),
+                        ObjectSerializer::deserialize($content, '\MvApi\Model\GradeRead', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\MvApi\Model\GradeJsonldRead';
+            $returnType = '\MvApi\Model\GradeRead';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -507,7 +507,7 @@ class GradeApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MvApi\Model\GradeJsonldRead',
+                        '\MvApi\Model\GradeRead',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -549,7 +549,7 @@ class GradeApi
      */
     public function getGradeItemAsyncWithHttpInfo($id)
     {
-        $returnType = '\MvApi\Model\GradeJsonldRead';
+        $returnType = '\MvApi\Model\GradeRead';
         $request = $this->getGradeItemRequest($id);
 
         return $this->client
@@ -623,11 +623,11 @@ class GradeApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/ld+json', 'application/json', 'text/html']
+                ['application/json', 'application/ld+json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/ld+json', 'application/json', 'text/html'],
+                ['application/json', 'application/ld+json'],
                 []
             );
         }

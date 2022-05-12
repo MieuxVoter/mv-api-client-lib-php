@@ -120,15 +120,15 @@ class RegistrationApi
      *
      * Registers a new User.
      *
-     * @param  \MvApi\Model\UserJsonldCreate $user_jsonld_create The new User resource (optional)
+     * @param  \MvApi\Model\UserCreate $user_create The new User resource (optional)
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MvApi\Model\UserJsonldRead
+     * @return \MvApi\Model\UserRead
      */
-    public function postUserCollection($user_jsonld_create = null)
+    public function postUserCollection($user_create = null)
     {
-        list($response) = $this->postUserCollectionWithHttpInfo($user_jsonld_create);
+        list($response) = $this->postUserCollectionWithHttpInfo($user_create);
         return $response;
     }
 
@@ -137,15 +137,15 @@ class RegistrationApi
      *
      * Registers a new User.
      *
-     * @param  \MvApi\Model\UserJsonldCreate $user_jsonld_create The new User resource (optional)
+     * @param  \MvApi\Model\UserCreate $user_create The new User resource (optional)
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MvApi\Model\UserJsonldRead, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MvApi\Model\UserRead, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postUserCollectionWithHttpInfo($user_jsonld_create = null)
+    public function postUserCollectionWithHttpInfo($user_create = null)
     {
-        $request = $this->postUserCollectionRequest($user_jsonld_create);
+        $request = $this->postUserCollectionRequest($user_create);
 
         try {
             $options = $this->createHttpClientOption();
@@ -184,20 +184,20 @@ class RegistrationApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\MvApi\Model\UserJsonldRead' === '\SplFileObject') {
+                    if ('\MvApi\Model\UserRead' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MvApi\Model\UserJsonldRead', []),
+                        ObjectSerializer::deserialize($content, '\MvApi\Model\UserRead', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\MvApi\Model\UserJsonldRead';
+            $returnType = '\MvApi\Model\UserRead';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -215,7 +215,7 @@ class RegistrationApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MvApi\Model\UserJsonldRead',
+                        '\MvApi\Model\UserRead',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -230,14 +230,14 @@ class RegistrationApi
      *
      * Registers a new User.
      *
-     * @param  \MvApi\Model\UserJsonldCreate $user_jsonld_create The new User resource (optional)
+     * @param  \MvApi\Model\UserCreate $user_create The new User resource (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postUserCollectionAsync($user_jsonld_create = null)
+    public function postUserCollectionAsync($user_create = null)
     {
-        return $this->postUserCollectionAsyncWithHttpInfo($user_jsonld_create)
+        return $this->postUserCollectionAsyncWithHttpInfo($user_create)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -250,15 +250,15 @@ class RegistrationApi
      *
      * Registers a new User.
      *
-     * @param  \MvApi\Model\UserJsonldCreate $user_jsonld_create The new User resource (optional)
+     * @param  \MvApi\Model\UserCreate $user_create The new User resource (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postUserCollectionAsyncWithHttpInfo($user_jsonld_create = null)
+    public function postUserCollectionAsyncWithHttpInfo($user_create = null)
     {
-        $returnType = '\MvApi\Model\UserJsonldRead';
-        $request = $this->postUserCollectionRequest($user_jsonld_create);
+        $returnType = '\MvApi\Model\UserRead';
+        $request = $this->postUserCollectionRequest($user_create);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -296,12 +296,12 @@ class RegistrationApi
     /**
      * Create request for operation 'postUserCollection'
      *
-     * @param  \MvApi\Model\UserJsonldCreate $user_jsonld_create The new User resource (optional)
+     * @param  \MvApi\Model\UserCreate $user_create The new User resource (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postUserCollectionRequest($user_jsonld_create = null)
+    public function postUserCollectionRequest($user_create = null)
     {
 
         $resourcePath = '/users';
@@ -317,21 +317,21 @@ class RegistrationApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/ld+json', 'application/json', 'text/html']
+                ['application/json', 'application/ld+json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/ld+json', 'application/json', 'text/html'],
-                ['application/ld+json', 'application/json', 'text/html']
+                ['application/json', 'application/ld+json'],
+                ['application/json', 'application/ld+json']
             );
         }
 
         // for model (json/xml)
-        if (isset($user_jsonld_create)) {
+        if (isset($user_create)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($user_jsonld_create));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($user_create));
             } else {
-                $httpBody = $user_jsonld_create;
+                $httpBody = $user_create;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

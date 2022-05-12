@@ -11,7 +11,7 @@ Method | HTTP request | Description
 ## `apiPollsGradesGetSubresource()`
 
 ```php
-apiPollsGradesGetSubresource($id, $page): \MvApi\Model\InlineResponse2002
+apiPollsGradesGetSubresource($id, $page): \MvApi\Model\GradeRead[]
 ```
 
 Retrieves the collection of Grade resources.
@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MvApi\Model\InlineResponse2002**](../Model/InlineResponse2002.md)
+[**\MvApi\Model\GradeRead[]**](../Model/GradeRead.md)
 
 ### Authorization
 
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/ld+json`, `application/json`, `text/html`
+- **Accept**: `application/json`, `application/ld+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 ## `getGradeItem()`
 
 ```php
-getGradeItem($id): \MvApi\Model\GradeJsonldRead
+getGradeItem($id): \MvApi\Model\GradeRead
 ```
 
 Retrieves a Grade resource.
@@ -115,7 +115,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MvApi\Model\GradeJsonldRead**](../Model/GradeJsonldRead.md)
+[**\MvApi\Model\GradeRead**](../Model/GradeRead.md)
 
 ### Authorization
 
@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/ld+json`, `application/json`, `text/html`
+- **Accept**: `application/json`, `application/ld+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

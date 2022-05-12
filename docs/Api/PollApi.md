@@ -16,7 +16,7 @@ Method | HTTP request | Description
 ## `apiPollsGradesGetSubresource()`
 
 ```php
-apiPollsGradesGetSubresource($id, $page): \MvApi\Model\InlineResponse2002
+apiPollsGradesGetSubresource($id, $page): \MvApi\Model\GradeRead[]
 ```
 
 Retrieves the collection of Grade resources.
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MvApi\Model\InlineResponse2002**](../Model/InlineResponse2002.md)
+[**\MvApi\Model\GradeRead[]**](../Model/GradeRead.md)
 
 ### Authorization
 
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/ld+json`, `application/json`, `text/html`
+- **Accept**: `application/json`, `application/ld+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 ## `apiPollsProposalsGetSubresource()`
 
 ```php
-apiPollsProposalsGetSubresource($id, $page): \MvApi\Model\InlineResponse2003
+apiPollsProposalsGetSubresource($id, $page): \MvApi\Model\ProposalRead[]
 ```
 
 Retrieves the collection of Proposal resources.
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MvApi\Model\InlineResponse2003**](../Model/InlineResponse2003.md)
+[**\MvApi\Model\ProposalRead[]**](../Model/ProposalRead.md)
 
 ### Authorization
 
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/ld+json`, `application/json`, `text/html`
+- **Accept**: `application/json`, `application/ld+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -199,7 +199,7 @@ void (empty response body)
 ## `getForPollResultItem()`
 
 ```php
-getForPollResultItem($id): \MvApi\Model\ResultJsonldRead
+getForPollResultItem($id): \MvApi\Model\ResultRead
 ```
 
 Gets the result of a poll
@@ -243,7 +243,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MvApi\Model\ResultJsonldRead**](../Model/ResultJsonldRead.md)
+[**\MvApi\Model\ResultRead**](../Model/ResultRead.md)
 
 ### Authorization
 
@@ -252,7 +252,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/ld+json`, `application/json`, `text/html`
+- **Accept**: `application/json`, `application/ld+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -261,7 +261,7 @@ Name | Type | Description  | Notes
 ## `getPollCollection()`
 
 ```php
-getPollCollection($page): \MvApi\Model\InlineResponse2001
+getPollCollection($page): \MvApi\Model\PollRead[]
 ```
 
 Retrieves the collection of Poll resources.
@@ -303,7 +303,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MvApi\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\MvApi\Model\PollRead[]**](../Model/PollRead.md)
 
 ### Authorization
 
@@ -312,7 +312,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/ld+json`, `application/json`, `text/html`
+- **Accept**: `application/json`, `application/ld+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -321,7 +321,7 @@ Name | Type | Description  | Notes
 ## `getPollItem()`
 
 ```php
-getPollItem($id): \MvApi\Model\PollJsonldRead
+getPollItem($id): \MvApi\Model\PollRead
 ```
 
 Retrieves a Poll resource.
@@ -363,7 +363,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MvApi\Model\PollJsonldRead**](../Model/PollJsonldRead.md)
+[**\MvApi\Model\PollRead**](../Model/PollRead.md)
 
 ### Authorization
 
@@ -372,7 +372,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/ld+json`, `application/json`, `text/html`
+- **Accept**: `application/json`, `application/ld+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -381,7 +381,7 @@ Name | Type | Description  | Notes
 ## `postPollCollection()`
 
 ```php
-postPollCollection($poll_jsonld_create): \MvApi\Model\PollJsonldRead
+postPollCollection($poll_create): \MvApi\Model\PollRead
 ```
 
 Creates a Poll resource.
@@ -405,10 +405,10 @@ $apiInstance = new MvApi\Api\PollApi(
     new GuzzleHttp\Client(),
     $config
 );
-$poll_jsonld_create = new \MvApi\Model\PollJsonldCreate(); // \MvApi\Model\PollJsonldCreate | The new Poll resource
+$poll_create = new \MvApi\Model\PollCreate(); // \MvApi\Model\PollCreate | The new Poll resource
 
 try {
-    $result = $apiInstance->postPollCollection($poll_jsonld_create);
+    $result = $apiInstance->postPollCollection($poll_create);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PollApi->postPollCollection: ', $e->getMessage(), PHP_EOL;
@@ -419,11 +419,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **poll_jsonld_create** | [**\MvApi\Model\PollJsonldCreate**](../Model/PollJsonldCreate.md)| The new Poll resource | [optional]
+ **poll_create** | [**\MvApi\Model\PollCreate**](../Model/PollCreate.md)| The new Poll resource | [optional]
 
 ### Return type
 
-[**\MvApi\Model\PollJsonldRead**](../Model/PollJsonldRead.md)
+[**\MvApi\Model\PollRead**](../Model/PollRead.md)
 
 ### Authorization
 
@@ -431,8 +431,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: `application/ld+json`, `application/json`, `text/html`
-- **Accept**: `application/ld+json`, `application/json`, `text/html`
+- **Content-Type**: `application/json`, `application/ld+json`
+- **Accept**: `application/json`, `application/ld+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

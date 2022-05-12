@@ -12,7 +12,7 @@ Method | HTTP request | Description
 ## `getForPollInvitationCollection()`
 
 ```php
-getForPollInvitationCollection($id, $page): \MvApi\Model\InlineResponse200
+getForPollInvitationCollection($id, $page): \MvApi\Model\InvitationRead[]
 ```
 
 Retrieves the collection of Invitation resources.
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MvApi\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\MvApi\Model\InvitationRead[]**](../Model/InvitationRead.md)
 
 ### Authorization
 
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/ld+json`, `application/json`, `text/html`
+- **Accept**: `application/json`, `application/ld+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 ## `getInvitationCollection()`
 
 ```php
-getInvitationCollection($page): \MvApi\Model\InlineResponse200
+getInvitationCollection($page): \MvApi\Model\InvitationRead[]
 ```
 
 Retrieves the collection of Invitation resources.
@@ -116,7 +116,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MvApi\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\MvApi\Model\InvitationRead[]**](../Model/InvitationRead.md)
 
 ### Authorization
 
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/ld+json`, `application/json`, `text/html`
+- **Accept**: `application/json`, `application/ld+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -134,7 +134,7 @@ Name | Type | Description  | Notes
 ## `getInvitationItem()`
 
 ```php
-getInvitationItem($id): \MvApi\Model\InvitationJsonldRead
+getInvitationItem($id): \MvApi\Model\InvitationRead
 ```
 
 Retrieves a Invitation resource.
@@ -176,7 +176,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MvApi\Model\InvitationJsonldRead**](../Model/InvitationJsonldRead.md)
+[**\MvApi\Model\InvitationRead**](../Model/InvitationRead.md)
 
 ### Authorization
 
@@ -185,7 +185,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/ld+json`, `application/json`, `text/html`
+- **Accept**: `application/json`, `application/ld+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

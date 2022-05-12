@@ -124,7 +124,7 @@ class ResultApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MvApi\Model\ResultJsonldRead
+     * @return \MvApi\Model\ResultRead
      */
     public function getForPollResultItem($id)
     {
@@ -141,7 +141,7 @@ class ResultApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MvApi\Model\ResultJsonldRead, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MvApi\Model\ResultRead, HTTP status code, HTTP response headers (array of strings)
      */
     public function getForPollResultItemWithHttpInfo($id)
     {
@@ -184,20 +184,20 @@ class ResultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MvApi\Model\ResultJsonldRead' === '\SplFileObject') {
+                    if ('\MvApi\Model\ResultRead' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MvApi\Model\ResultJsonldRead', []),
+                        ObjectSerializer::deserialize($content, '\MvApi\Model\ResultRead', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\MvApi\Model\ResultJsonldRead';
+            $returnType = '\MvApi\Model\ResultRead';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -215,7 +215,7 @@ class ResultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MvApi\Model\ResultJsonldRead',
+                        '\MvApi\Model\ResultRead',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -257,7 +257,7 @@ class ResultApi
      */
     public function getForPollResultItemAsyncWithHttpInfo($id)
     {
-        $returnType = '\MvApi\Model\ResultJsonldRead';
+        $returnType = '\MvApi\Model\ResultRead';
         $request = $this->getForPollResultItemRequest($id);
 
         return $this->client
@@ -331,11 +331,11 @@ class ResultApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/ld+json', 'application/json', 'text/html']
+                ['application/json', 'application/ld+json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/ld+json', 'application/json', 'text/html'],
+                ['application/json', 'application/ld+json'],
                 []
             );
         }

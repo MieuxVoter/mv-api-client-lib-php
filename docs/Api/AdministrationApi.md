@@ -10,7 +10,7 @@ Method | HTTP request | Description
 ## `getUserCollection()`
 
 ```php
-getUserCollection($page): \MvApi\Model\InlineResponse2005
+getUserCollection($page): \MvApi\Model\UserRead[]
 ```
 
 Retrieves the collection of Users.
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MvApi\Model\InlineResponse2005**](../Model/InlineResponse2005.md)
+[**\MvApi\Model\UserRead[]**](../Model/UserRead.md)
 
 ### Authorization
 
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/ld+json`, `application/json`, `text/html`
+- **Accept**: `application/json`, `application/ld+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

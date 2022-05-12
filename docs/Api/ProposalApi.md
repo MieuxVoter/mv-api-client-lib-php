@@ -14,7 +14,7 @@ Method | HTTP request | Description
 ## `apiPollsProposalsBallotsGetSubresource()`
 
 ```php
-apiPollsProposalsBallotsGetSubresource($poll_id, $proposal_id, $page): \MvApi\Model\InlineResponse2004
+apiPollsProposalsBallotsGetSubresource($poll_id, $proposal_id, $page): \MvApi\Model\Ballot[]
 ```
 
 Retrieves the collection of Ballot resources.
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MvApi\Model\InlineResponse2004**](../Model/InlineResponse2004.md)
+[**\MvApi\Model\Ballot[]**](../Model/Ballot.md)
 
 ### Authorization
 
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/ld+json`, `application/json`, `text/html`
+- **Accept**: `application/json`, `application/ld+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 ## `apiPollsProposalsGetSubresource()`
 
 ```php
-apiPollsProposalsGetSubresource($id, $page): \MvApi\Model\InlineResponse2003
+apiPollsProposalsGetSubresource($id, $page): \MvApi\Model\ProposalRead[]
 ```
 
 Retrieves the collection of Proposal resources.
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MvApi\Model\InlineResponse2003**](../Model/InlineResponse2003.md)
+[**\MvApi\Model\ProposalRead[]**](../Model/ProposalRead.md)
 
 ### Authorization
 
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/ld+json`, `application/json`, `text/html`
+- **Accept**: `application/json`, `application/ld+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -140,7 +140,7 @@ Name | Type | Description  | Notes
 ## `apiProposalsBallotsGetSubresource()`
 
 ```php
-apiProposalsBallotsGetSubresource($id, $page): \MvApi\Model\InlineResponse2004
+apiProposalsBallotsGetSubresource($id, $page): \MvApi\Model\Ballot[]
 ```
 
 Retrieves the collection of Ballot resources.
@@ -184,7 +184,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MvApi\Model\InlineResponse2004**](../Model/InlineResponse2004.md)
+[**\MvApi\Model\Ballot[]**](../Model/Ballot.md)
 
 ### Authorization
 
@@ -193,7 +193,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/ld+json`, `application/json`, `text/html`
+- **Accept**: `application/json`, `application/ld+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -202,7 +202,7 @@ Name | Type | Description  | Notes
 ## `getProposalItem()`
 
 ```php
-getProposalItem($id): \MvApi\Model\ProposalJsonldRead
+getProposalItem($id): \MvApi\Model\ProposalRead
 ```
 
 Retrieves a Proposal resource.
@@ -244,7 +244,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MvApi\Model\ProposalJsonldRead**](../Model/ProposalJsonldRead.md)
+[**\MvApi\Model\ProposalRead**](../Model/ProposalRead.md)
 
 ### Authorization
 
@@ -253,7 +253,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/ld+json`, `application/json`, `text/html`
+- **Accept**: `application/json`, `application/ld+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -262,7 +262,7 @@ Name | Type | Description  | Notes
 ## `postProposalCollection()`
 
 ```php
-postProposalCollection($id, $proposal_jsonld_create): \MvApi\Model\ProposalJsonldRead
+postProposalCollection($id, $proposal_create): \MvApi\Model\ProposalRead
 ```
 
 Creates a Proposal resource.
@@ -287,10 +287,10 @@ $apiInstance = new MvApi\Api\ProposalApi(
     $config
 );
 $id = d434a72c-20cb-480f-9955-1fa2ce2e91b1; // string | Universally Unique IDentifier (UUID)
-$proposal_jsonld_create = new \MvApi\Model\ProposalJsonldCreate(); // \MvApi\Model\ProposalJsonldCreate | The new Proposal resource
+$proposal_create = new \MvApi\Model\ProposalCreate(); // \MvApi\Model\ProposalCreate | The new Proposal resource
 
 try {
-    $result = $apiInstance->postProposalCollection($id, $proposal_jsonld_create);
+    $result = $apiInstance->postProposalCollection($id, $proposal_create);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProposalApi->postProposalCollection: ', $e->getMessage(), PHP_EOL;
@@ -302,11 +302,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**| Universally Unique IDentifier (UUID) |
- **proposal_jsonld_create** | [**\MvApi\Model\ProposalJsonldCreate**](../Model/ProposalJsonldCreate.md)| The new Proposal resource | [optional]
+ **proposal_create** | [**\MvApi\Model\ProposalCreate**](../Model/ProposalCreate.md)| The new Proposal resource | [optional]
 
 ### Return type
 
-[**\MvApi\Model\ProposalJsonldRead**](../Model/ProposalJsonldRead.md)
+[**\MvApi\Model\ProposalRead**](../Model/ProposalRead.md)
 
 ### Authorization
 
@@ -314,8 +314,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: `application/ld+json`, `application/json`, `text/html`
-- **Accept**: `application/ld+json`, `application/json`, `text/html`
+- **Content-Type**: `application/json`, `application/ld+json`
+- **Accept**: `application/json`, `application/ld+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

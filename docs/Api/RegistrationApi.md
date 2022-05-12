@@ -10,7 +10,7 @@ Method | HTTP request | Description
 ## `postUserCollection()`
 
 ```php
-postUserCollection($user_jsonld_create): \MvApi\Model\UserJsonldRead
+postUserCollection($user_create): \MvApi\Model\UserRead
 ```
 
 Registers a new User.
@@ -36,10 +36,10 @@ $apiInstance = new MvApi\Api\RegistrationApi(
     new GuzzleHttp\Client(),
     $config
 );
-$user_jsonld_create = new \MvApi\Model\UserJsonldCreate(); // \MvApi\Model\UserJsonldCreate | The new User resource
+$user_create = new \MvApi\Model\UserCreate(); // \MvApi\Model\UserCreate | The new User resource
 
 try {
-    $result = $apiInstance->postUserCollection($user_jsonld_create);
+    $result = $apiInstance->postUserCollection($user_create);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RegistrationApi->postUserCollection: ', $e->getMessage(), PHP_EOL;
@@ -50,11 +50,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_jsonld_create** | [**\MvApi\Model\UserJsonldCreate**](../Model/UserJsonldCreate.md)| The new User resource | [optional]
+ **user_create** | [**\MvApi\Model\UserCreate**](../Model/UserCreate.md)| The new User resource | [optional]
 
 ### Return type
 
-[**\MvApi\Model\UserJsonldRead**](../Model/UserJsonldRead.md)
+[**\MvApi\Model\UserRead**](../Model/UserRead.md)
 
 ### Authorization
 
@@ -62,8 +62,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: `application/ld+json`, `application/json`, `text/html`
-- **Accept**: `application/ld+json`, `application/json`, `text/html`
+- **Content-Type**: `application/json`, `application/ld+json`
+- **Accept**: `application/json`, `application/ld+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

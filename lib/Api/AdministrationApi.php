@@ -124,7 +124,7 @@ class AdministrationApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MvApi\Model\InlineResponse2005
+     * @return \MvApi\Model\UserRead[]
      */
     public function getUserCollection($page = 1)
     {
@@ -141,7 +141,7 @@ class AdministrationApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MvApi\Model\InlineResponse2005, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MvApi\Model\UserRead[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getUserCollectionWithHttpInfo($page = 1)
     {
@@ -184,20 +184,20 @@ class AdministrationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MvApi\Model\InlineResponse2005' === '\SplFileObject') {
+                    if ('\MvApi\Model\UserRead[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MvApi\Model\InlineResponse2005', []),
+                        ObjectSerializer::deserialize($content, '\MvApi\Model\UserRead[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\MvApi\Model\InlineResponse2005';
+            $returnType = '\MvApi\Model\UserRead[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -215,7 +215,7 @@ class AdministrationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MvApi\Model\InlineResponse2005',
+                        '\MvApi\Model\UserRead[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -257,7 +257,7 @@ class AdministrationApi
      */
     public function getUserCollectionAsyncWithHttpInfo($page = 1)
     {
-        $returnType = '\MvApi\Model\InlineResponse2005';
+        $returnType = '\MvApi\Model\UserRead[]';
         $request = $this->getUserCollectionRequest($page);
 
         return $this->client
@@ -328,11 +328,11 @@ class AdministrationApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/ld+json', 'application/json', 'text/html']
+                ['application/json', 'application/ld+json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/ld+json', 'application/json', 'text/html'],
+                ['application/json', 'application/ld+json'],
                 []
             );
         }

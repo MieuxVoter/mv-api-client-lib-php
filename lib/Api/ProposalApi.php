@@ -126,7 +126,7 @@ class ProposalApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MvApi\Model\InlineResponse2004
+     * @return \MvApi\Model\Ballot[]
      */
     public function apiPollsProposalsBallotsGetSubresource($poll_id, $proposal_id, $page = 1)
     {
@@ -145,7 +145,7 @@ class ProposalApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MvApi\Model\InlineResponse2004, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MvApi\Model\Ballot[], HTTP status code, HTTP response headers (array of strings)
      */
     public function apiPollsProposalsBallotsGetSubresourceWithHttpInfo($poll_id, $proposal_id, $page = 1)
     {
@@ -188,20 +188,20 @@ class ProposalApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MvApi\Model\InlineResponse2004' === '\SplFileObject') {
+                    if ('\MvApi\Model\Ballot[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MvApi\Model\InlineResponse2004', []),
+                        ObjectSerializer::deserialize($content, '\MvApi\Model\Ballot[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\MvApi\Model\InlineResponse2004';
+            $returnType = '\MvApi\Model\Ballot[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -219,7 +219,7 @@ class ProposalApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MvApi\Model\InlineResponse2004',
+                        '\MvApi\Model\Ballot[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -265,7 +265,7 @@ class ProposalApi
      */
     public function apiPollsProposalsBallotsGetSubresourceAsyncWithHttpInfo($poll_id, $proposal_id, $page = 1)
     {
-        $returnType = '\MvApi\Model\InlineResponse2004';
+        $returnType = '\MvApi\Model\Ballot[]';
         $request = $this->apiPollsProposalsBallotsGetSubresourceRequest($poll_id, $proposal_id, $page);
 
         return $this->client
@@ -366,11 +366,11 @@ class ProposalApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/ld+json', 'application/json', 'text/html']
+                ['application/json', 'application/ld+json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/ld+json', 'application/json', 'text/html'],
+                ['application/json', 'application/ld+json'],
                 []
             );
         }
@@ -436,7 +436,7 @@ class ProposalApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MvApi\Model\InlineResponse2003
+     * @return \MvApi\Model\ProposalRead[]
      */
     public function apiPollsProposalsGetSubresource($id, $page = 1)
     {
@@ -454,7 +454,7 @@ class ProposalApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MvApi\Model\InlineResponse2003, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MvApi\Model\ProposalRead[], HTTP status code, HTTP response headers (array of strings)
      */
     public function apiPollsProposalsGetSubresourceWithHttpInfo($id, $page = 1)
     {
@@ -497,20 +497,20 @@ class ProposalApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MvApi\Model\InlineResponse2003' === '\SplFileObject') {
+                    if ('\MvApi\Model\ProposalRead[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MvApi\Model\InlineResponse2003', []),
+                        ObjectSerializer::deserialize($content, '\MvApi\Model\ProposalRead[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\MvApi\Model\InlineResponse2003';
+            $returnType = '\MvApi\Model\ProposalRead[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -528,7 +528,7 @@ class ProposalApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MvApi\Model\InlineResponse2003',
+                        '\MvApi\Model\ProposalRead[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -572,7 +572,7 @@ class ProposalApi
      */
     public function apiPollsProposalsGetSubresourceAsyncWithHttpInfo($id, $page = 1)
     {
-        $returnType = '\MvApi\Model\InlineResponse2003';
+        $returnType = '\MvApi\Model\ProposalRead[]';
         $request = $this->apiPollsProposalsGetSubresourceRequest($id, $page);
 
         return $this->client
@@ -658,11 +658,11 @@ class ProposalApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/ld+json', 'application/json', 'text/html']
+                ['application/json', 'application/ld+json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/ld+json', 'application/json', 'text/html'],
+                ['application/json', 'application/ld+json'],
                 []
             );
         }
@@ -728,7 +728,7 @@ class ProposalApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MvApi\Model\InlineResponse2004
+     * @return \MvApi\Model\Ballot[]
      */
     public function apiProposalsBallotsGetSubresource($id, $page = 1)
     {
@@ -746,7 +746,7 @@ class ProposalApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MvApi\Model\InlineResponse2004, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MvApi\Model\Ballot[], HTTP status code, HTTP response headers (array of strings)
      */
     public function apiProposalsBallotsGetSubresourceWithHttpInfo($id, $page = 1)
     {
@@ -789,20 +789,20 @@ class ProposalApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MvApi\Model\InlineResponse2004' === '\SplFileObject') {
+                    if ('\MvApi\Model\Ballot[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MvApi\Model\InlineResponse2004', []),
+                        ObjectSerializer::deserialize($content, '\MvApi\Model\Ballot[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\MvApi\Model\InlineResponse2004';
+            $returnType = '\MvApi\Model\Ballot[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -820,7 +820,7 @@ class ProposalApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MvApi\Model\InlineResponse2004',
+                        '\MvApi\Model\Ballot[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -864,7 +864,7 @@ class ProposalApi
      */
     public function apiProposalsBallotsGetSubresourceAsyncWithHttpInfo($id, $page = 1)
     {
-        $returnType = '\MvApi\Model\InlineResponse2004';
+        $returnType = '\MvApi\Model\Ballot[]';
         $request = $this->apiProposalsBallotsGetSubresourceRequest($id, $page);
 
         return $this->client
@@ -950,11 +950,11 @@ class ProposalApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/ld+json', 'application/json', 'text/html']
+                ['application/json', 'application/ld+json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/ld+json', 'application/json', 'text/html'],
+                ['application/json', 'application/ld+json'],
                 []
             );
         }
@@ -1019,7 +1019,7 @@ class ProposalApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MvApi\Model\ProposalJsonldRead
+     * @return \MvApi\Model\ProposalRead
      */
     public function getProposalItem($id)
     {
@@ -1036,7 +1036,7 @@ class ProposalApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MvApi\Model\ProposalJsonldRead, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MvApi\Model\ProposalRead, HTTP status code, HTTP response headers (array of strings)
      */
     public function getProposalItemWithHttpInfo($id)
     {
@@ -1079,20 +1079,20 @@ class ProposalApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MvApi\Model\ProposalJsonldRead' === '\SplFileObject') {
+                    if ('\MvApi\Model\ProposalRead' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MvApi\Model\ProposalJsonldRead', []),
+                        ObjectSerializer::deserialize($content, '\MvApi\Model\ProposalRead', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\MvApi\Model\ProposalJsonldRead';
+            $returnType = '\MvApi\Model\ProposalRead';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1110,7 +1110,7 @@ class ProposalApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MvApi\Model\ProposalJsonldRead',
+                        '\MvApi\Model\ProposalRead',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1152,7 +1152,7 @@ class ProposalApi
      */
     public function getProposalItemAsyncWithHttpInfo($id)
     {
-        $returnType = '\MvApi\Model\ProposalJsonldRead';
+        $returnType = '\MvApi\Model\ProposalRead';
         $request = $this->getProposalItemRequest($id);
 
         return $this->client
@@ -1226,11 +1226,11 @@ class ProposalApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/ld+json', 'application/json', 'text/html']
+                ['application/json', 'application/ld+json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/ld+json', 'application/json', 'text/html'],
+                ['application/json', 'application/ld+json'],
                 []
             );
         }
@@ -1292,15 +1292,15 @@ class ProposalApi
      * Creates a Proposal resource.
      *
      * @param  string $id Universally Unique IDentifier (UUID) (required)
-     * @param  \MvApi\Model\ProposalJsonldCreate $proposal_jsonld_create The new Proposal resource (optional)
+     * @param  \MvApi\Model\ProposalCreate $proposal_create The new Proposal resource (optional)
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MvApi\Model\ProposalJsonldRead
+     * @return \MvApi\Model\ProposalRead
      */
-    public function postProposalCollection($id, $proposal_jsonld_create = null)
+    public function postProposalCollection($id, $proposal_create = null)
     {
-        list($response) = $this->postProposalCollectionWithHttpInfo($id, $proposal_jsonld_create);
+        list($response) = $this->postProposalCollectionWithHttpInfo($id, $proposal_create);
         return $response;
     }
 
@@ -1310,15 +1310,15 @@ class ProposalApi
      * Creates a Proposal resource.
      *
      * @param  string $id Universally Unique IDentifier (UUID) (required)
-     * @param  \MvApi\Model\ProposalJsonldCreate $proposal_jsonld_create The new Proposal resource (optional)
+     * @param  \MvApi\Model\ProposalCreate $proposal_create The new Proposal resource (optional)
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MvApi\Model\ProposalJsonldRead, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MvApi\Model\ProposalRead, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postProposalCollectionWithHttpInfo($id, $proposal_jsonld_create = null)
+    public function postProposalCollectionWithHttpInfo($id, $proposal_create = null)
     {
-        $request = $this->postProposalCollectionRequest($id, $proposal_jsonld_create);
+        $request = $this->postProposalCollectionRequest($id, $proposal_create);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1357,20 +1357,20 @@ class ProposalApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\MvApi\Model\ProposalJsonldRead' === '\SplFileObject') {
+                    if ('\MvApi\Model\ProposalRead' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MvApi\Model\ProposalJsonldRead', []),
+                        ObjectSerializer::deserialize($content, '\MvApi\Model\ProposalRead', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\MvApi\Model\ProposalJsonldRead';
+            $returnType = '\MvApi\Model\ProposalRead';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1388,7 +1388,7 @@ class ProposalApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MvApi\Model\ProposalJsonldRead',
+                        '\MvApi\Model\ProposalRead',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1404,14 +1404,14 @@ class ProposalApi
      * Creates a Proposal resource.
      *
      * @param  string $id Universally Unique IDentifier (UUID) (required)
-     * @param  \MvApi\Model\ProposalJsonldCreate $proposal_jsonld_create The new Proposal resource (optional)
+     * @param  \MvApi\Model\ProposalCreate $proposal_create The new Proposal resource (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postProposalCollectionAsync($id, $proposal_jsonld_create = null)
+    public function postProposalCollectionAsync($id, $proposal_create = null)
     {
-        return $this->postProposalCollectionAsyncWithHttpInfo($id, $proposal_jsonld_create)
+        return $this->postProposalCollectionAsyncWithHttpInfo($id, $proposal_create)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1425,15 +1425,15 @@ class ProposalApi
      * Creates a Proposal resource.
      *
      * @param  string $id Universally Unique IDentifier (UUID) (required)
-     * @param  \MvApi\Model\ProposalJsonldCreate $proposal_jsonld_create The new Proposal resource (optional)
+     * @param  \MvApi\Model\ProposalCreate $proposal_create The new Proposal resource (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postProposalCollectionAsyncWithHttpInfo($id, $proposal_jsonld_create = null)
+    public function postProposalCollectionAsyncWithHttpInfo($id, $proposal_create = null)
     {
-        $returnType = '\MvApi\Model\ProposalJsonldRead';
-        $request = $this->postProposalCollectionRequest($id, $proposal_jsonld_create);
+        $returnType = '\MvApi\Model\ProposalRead';
+        $request = $this->postProposalCollectionRequest($id, $proposal_create);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1472,12 +1472,12 @@ class ProposalApi
      * Create request for operation 'postProposalCollection'
      *
      * @param  string $id Universally Unique IDentifier (UUID) (required)
-     * @param  \MvApi\Model\ProposalJsonldCreate $proposal_jsonld_create The new Proposal resource (optional)
+     * @param  \MvApi\Model\ProposalCreate $proposal_create The new Proposal resource (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postProposalCollectionRequest($id, $proposal_jsonld_create = null)
+    public function postProposalCollectionRequest($id, $proposal_create = null)
     {
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
@@ -1507,21 +1507,21 @@ class ProposalApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/ld+json', 'application/json', 'text/html']
+                ['application/json', 'application/ld+json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/ld+json', 'application/json', 'text/html'],
-                ['application/ld+json', 'application/json', 'text/html']
+                ['application/json', 'application/ld+json'],
+                ['application/json', 'application/ld+json']
             );
         }
 
         // for model (json/xml)
-        if (isset($proposal_jsonld_create)) {
+        if (isset($proposal_create)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($proposal_jsonld_create));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($proposal_create));
             } else {
-                $httpBody = $proposal_jsonld_create;
+                $httpBody = $proposal_create;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

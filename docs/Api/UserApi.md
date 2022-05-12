@@ -134,7 +134,7 @@ This endpoint does not need any parameter.
 ## `getUserCollection()`
 
 ```php
-getUserCollection($page): \MvApi\Model\InlineResponse2005
+getUserCollection($page): \MvApi\Model\UserRead[]
 ```
 
 Retrieves the collection of Users.
@@ -178,7 +178,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MvApi\Model\InlineResponse2005**](../Model/InlineResponse2005.md)
+[**\MvApi\Model\UserRead[]**](../Model/UserRead.md)
 
 ### Authorization
 
@@ -187,7 +187,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/ld+json`, `application/json`, `text/html`
+- **Accept**: `application/json`, `application/ld+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 ## `getUserItem()`
 
 ```php
-getUserItem($id): \MvApi\Model\UserJsonldRead
+getUserItem($id): \MvApi\Model\UserRead
 ```
 
 Gets information about a User.
@@ -240,7 +240,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MvApi\Model\UserJsonldRead**](../Model/UserJsonldRead.md)
+[**\MvApi\Model\UserRead**](../Model/UserRead.md)
 
 ### Authorization
 
@@ -249,7 +249,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/ld+json`, `application/json`, `text/html`
+- **Accept**: `application/json`, `application/ld+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -320,7 +320,7 @@ Name | Type | Description  | Notes
 ## `postUserCollection()`
 
 ```php
-postUserCollection($user_jsonld_create): \MvApi\Model\UserJsonldRead
+postUserCollection($user_create): \MvApi\Model\UserRead
 ```
 
 Registers a new User.
@@ -346,10 +346,10 @@ $apiInstance = new MvApi\Api\UserApi(
     new GuzzleHttp\Client(),
     $config
 );
-$user_jsonld_create = new \MvApi\Model\UserJsonldCreate(); // \MvApi\Model\UserJsonldCreate | The new User resource
+$user_create = new \MvApi\Model\UserCreate(); // \MvApi\Model\UserCreate | The new User resource
 
 try {
-    $result = $apiInstance->postUserCollection($user_jsonld_create);
+    $result = $apiInstance->postUserCollection($user_create);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserApi->postUserCollection: ', $e->getMessage(), PHP_EOL;
@@ -360,11 +360,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_jsonld_create** | [**\MvApi\Model\UserJsonldCreate**](../Model/UserJsonldCreate.md)| The new User resource | [optional]
+ **user_create** | [**\MvApi\Model\UserCreate**](../Model/UserCreate.md)| The new User resource | [optional]
 
 ### Return type
 
-[**\MvApi\Model\UserJsonldRead**](../Model/UserJsonldRead.md)
+[**\MvApi\Model\UserRead**](../Model/UserRead.md)
 
 ### Authorization
 
@@ -372,8 +372,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: `application/ld+json`, `application/json`, `text/html`
-- **Accept**: `application/ld+json`, `application/json`, `text/html`
+- **Content-Type**: `application/json`, `application/ld+json`
+- **Accept**: `application/json`, `application/ld+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -382,7 +382,7 @@ Name | Type | Description  | Notes
 ## `putUserItem()`
 
 ```php
-putUserItem($id, $user_jsonld_edit): \MvApi\Model\UserJsonldRead
+putUserItem($id, $user_edit): \MvApi\Model\UserRead
 ```
 
 Updates information about a User.
@@ -409,10 +409,10 @@ $apiInstance = new MvApi\Api\UserApi(
     $config
 );
 $id = d434a72c-20cb-480f-9955-1fa2ce2e91b1; // string | Universally Unique IDentifier (UUID)
-$user_jsonld_edit = new \MvApi\Model\UserJsonldEdit(); // \MvApi\Model\UserJsonldEdit | The updated User resource
+$user_edit = new \MvApi\Model\UserEdit(); // \MvApi\Model\UserEdit | The updated User resource
 
 try {
-    $result = $apiInstance->putUserItem($id, $user_jsonld_edit);
+    $result = $apiInstance->putUserItem($id, $user_edit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserApi->putUserItem: ', $e->getMessage(), PHP_EOL;
@@ -424,11 +424,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**| Universally Unique IDentifier (UUID) |
- **user_jsonld_edit** | [**\MvApi\Model\UserJsonldEdit**](../Model/UserJsonldEdit.md)| The updated User resource | [optional]
+ **user_edit** | [**\MvApi\Model\UserEdit**](../Model/UserEdit.md)| The updated User resource | [optional]
 
 ### Return type
 
-[**\MvApi\Model\UserJsonldRead**](../Model/UserJsonldRead.md)
+[**\MvApi\Model\UserRead**](../Model/UserRead.md)
 
 ### Authorization
 
@@ -436,8 +436,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: `application/ld+json`, `application/json`, `text/html`
-- **Accept**: `application/ld+json`, `application/json`, `text/html`
+- **Content-Type**: `application/json`, `application/ld+json`
+- **Accept**: `application/json`, `application/ld+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

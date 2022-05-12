@@ -125,7 +125,7 @@ class InvitationApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MvApi\Model\InlineResponse200
+     * @return \MvApi\Model\InvitationRead[]
      */
     public function getForPollInvitationCollection($id, $page = 1)
     {
@@ -143,7 +143,7 @@ class InvitationApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MvApi\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MvApi\Model\InvitationRead[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getForPollInvitationCollectionWithHttpInfo($id, $page = 1)
     {
@@ -186,20 +186,20 @@ class InvitationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MvApi\Model\InlineResponse200' === '\SplFileObject') {
+                    if ('\MvApi\Model\InvitationRead[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MvApi\Model\InlineResponse200', []),
+                        ObjectSerializer::deserialize($content, '\MvApi\Model\InvitationRead[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\MvApi\Model\InlineResponse200';
+            $returnType = '\MvApi\Model\InvitationRead[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -217,7 +217,7 @@ class InvitationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MvApi\Model\InlineResponse200',
+                        '\MvApi\Model\InvitationRead[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -261,7 +261,7 @@ class InvitationApi
      */
     public function getForPollInvitationCollectionAsyncWithHttpInfo($id, $page = 1)
     {
-        $returnType = '\MvApi\Model\InlineResponse200';
+        $returnType = '\MvApi\Model\InvitationRead[]';
         $request = $this->getForPollInvitationCollectionRequest($id, $page);
 
         return $this->client
@@ -347,11 +347,11 @@ class InvitationApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/ld+json', 'application/json', 'text/html']
+                ['application/json', 'application/ld+json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/ld+json', 'application/json', 'text/html'],
+                ['application/json', 'application/ld+json'],
                 []
             );
         }
@@ -416,7 +416,7 @@ class InvitationApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MvApi\Model\InlineResponse200
+     * @return \MvApi\Model\InvitationRead[]
      */
     public function getInvitationCollection($page = 1)
     {
@@ -433,7 +433,7 @@ class InvitationApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MvApi\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MvApi\Model\InvitationRead[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getInvitationCollectionWithHttpInfo($page = 1)
     {
@@ -476,20 +476,20 @@ class InvitationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MvApi\Model\InlineResponse200' === '\SplFileObject') {
+                    if ('\MvApi\Model\InvitationRead[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MvApi\Model\InlineResponse200', []),
+                        ObjectSerializer::deserialize($content, '\MvApi\Model\InvitationRead[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\MvApi\Model\InlineResponse200';
+            $returnType = '\MvApi\Model\InvitationRead[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -507,7 +507,7 @@ class InvitationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MvApi\Model\InlineResponse200',
+                        '\MvApi\Model\InvitationRead[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -549,7 +549,7 @@ class InvitationApi
      */
     public function getInvitationCollectionAsyncWithHttpInfo($page = 1)
     {
-        $returnType = '\MvApi\Model\InlineResponse200';
+        $returnType = '\MvApi\Model\InvitationRead[]';
         $request = $this->getInvitationCollectionRequest($page);
 
         return $this->client
@@ -620,11 +620,11 @@ class InvitationApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/ld+json', 'application/json', 'text/html']
+                ['application/json', 'application/ld+json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/ld+json', 'application/json', 'text/html'],
+                ['application/json', 'application/ld+json'],
                 []
             );
         }
@@ -689,7 +689,7 @@ class InvitationApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MvApi\Model\InvitationJsonldRead
+     * @return \MvApi\Model\InvitationRead
      */
     public function getInvitationItem($id)
     {
@@ -706,7 +706,7 @@ class InvitationApi
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MvApi\Model\InvitationJsonldRead, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MvApi\Model\InvitationRead, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInvitationItemWithHttpInfo($id)
     {
@@ -749,20 +749,20 @@ class InvitationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MvApi\Model\InvitationJsonldRead' === '\SplFileObject') {
+                    if ('\MvApi\Model\InvitationRead' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MvApi\Model\InvitationJsonldRead', []),
+                        ObjectSerializer::deserialize($content, '\MvApi\Model\InvitationRead', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\MvApi\Model\InvitationJsonldRead';
+            $returnType = '\MvApi\Model\InvitationRead';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -780,7 +780,7 @@ class InvitationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MvApi\Model\InvitationJsonldRead',
+                        '\MvApi\Model\InvitationRead',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -822,7 +822,7 @@ class InvitationApi
      */
     public function getInvitationItemAsyncWithHttpInfo($id)
     {
-        $returnType = '\MvApi\Model\InvitationJsonldRead';
+        $returnType = '\MvApi\Model\InvitationRead';
         $request = $this->getInvitationItemRequest($id);
 
         return $this->client
@@ -896,11 +896,11 @@ class InvitationApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/ld+json', 'application/json', 'text/html']
+                ['application/json', 'application/ld+json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/ld+json', 'application/json', 'text/html'],
+                ['application/json', 'application/ld+json'],
                 []
             );
         }
