@@ -121,15 +121,16 @@ class InvitationApi
      * Retrieves the collection of Invitation resources.
      *
      * @param  string $id Universally Unique IDentifier (UUID) (required)
+     * @param  Int $limit limit (optional)
      * @param  int $page The collection page number (optional, default to 1)
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \MvApi\Model\InvitationRead[]
      */
-    public function getForPollInvitationCollection($id, $page = 1)
+    public function getForPollInvitationCollection($id, $limit = null, $page = 1)
     {
-        list($response) = $this->getForPollInvitationCollectionWithHttpInfo($id, $page);
+        list($response) = $this->getForPollInvitationCollectionWithHttpInfo($id, $limit, $page);
         return $response;
     }
 
@@ -139,15 +140,16 @@ class InvitationApi
      * Retrieves the collection of Invitation resources.
      *
      * @param  string $id Universally Unique IDentifier (UUID) (required)
+     * @param  Int $limit (optional)
      * @param  int $page The collection page number (optional, default to 1)
      *
      * @throws \MvApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \MvApi\Model\InvitationRead[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function getForPollInvitationCollectionWithHttpInfo($id, $page = 1)
+    public function getForPollInvitationCollectionWithHttpInfo($id, $limit = null, $page = 1)
     {
-        $request = $this->getForPollInvitationCollectionRequest($id, $page);
+        $request = $this->getForPollInvitationCollectionRequest($id, $limit, $page);
 
         try {
             $options = $this->createHttpClientOption();
@@ -233,14 +235,15 @@ class InvitationApi
      * Retrieves the collection of Invitation resources.
      *
      * @param  string $id Universally Unique IDentifier (UUID) (required)
+     * @param  Int $limit (optional)
      * @param  int $page The collection page number (optional, default to 1)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getForPollInvitationCollectionAsync($id, $page = 1)
+    public function getForPollInvitationCollectionAsync($id, $limit = null, $page = 1)
     {
-        return $this->getForPollInvitationCollectionAsyncWithHttpInfo($id, $page)
+        return $this->getForPollInvitationCollectionAsyncWithHttpInfo($id, $limit, $page)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -254,15 +257,16 @@ class InvitationApi
      * Retrieves the collection of Invitation resources.
      *
      * @param  string $id Universally Unique IDentifier (UUID) (required)
+     * @param  Int $limit (optional)
      * @param  int $page The collection page number (optional, default to 1)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getForPollInvitationCollectionAsyncWithHttpInfo($id, $page = 1)
+    public function getForPollInvitationCollectionAsyncWithHttpInfo($id, $limit = null, $page = 1)
     {
         $returnType = '\MvApi\Model\InvitationRead[]';
-        $request = $this->getForPollInvitationCollectionRequest($id, $page);
+        $request = $this->getForPollInvitationCollectionRequest($id, $limit, $page);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -301,12 +305,13 @@ class InvitationApi
      * Create request for operation 'getForPollInvitationCollection'
      *
      * @param  string $id Universally Unique IDentifier (UUID) (required)
+     * @param  Int $limit (optional)
      * @param  int $page The collection page number (optional, default to 1)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getForPollInvitationCollectionRequest($id, $page = 1)
+    public function getForPollInvitationCollectionRequest($id, $limit = null, $page = 1)
     {
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
@@ -322,6 +327,17 @@ class InvitationApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($limit !== null) {
+            if('form' === 'form' && is_array($limit)) {
+                foreach($limit as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['limit'] = $limit;
+            }
+        }
         // query params
         if ($page !== null) {
             if('form' === 'form' && is_array($page)) {

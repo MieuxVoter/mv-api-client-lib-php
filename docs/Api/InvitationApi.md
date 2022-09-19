@@ -12,7 +12,7 @@ Method | HTTP request | Description
 ## `getForPollInvitationCollection()`
 
 ```php
-getForPollInvitationCollection($id, $page): \MvApi\Model\InvitationRead[]
+getForPollInvitationCollection($id, $limit, $page): \MvApi\Model\InvitationRead[]
 ```
 
 Retrieves the collection of Invitation resources.
@@ -37,10 +37,11 @@ $apiInstance = new MvApi\Api\InvitationApi(
     $config
 );
 $id = d434a72c-20cb-480f-9955-1fa2ce2e91b1; // string | Universally Unique IDentifier (UUID)
+$limit = new \MvApi\Model\Int(); // Int
 $page = 1; // int | The collection page number
 
 try {
-    $result = $apiInstance->getForPollInvitationCollection($id, $page);
+    $result = $apiInstance->getForPollInvitationCollection($id, $limit, $page);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling InvitationApi->getForPollInvitationCollection: ', $e->getMessage(), PHP_EOL;
@@ -52,6 +53,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**| Universally Unique IDentifier (UUID) |
+ **limit** | [**Int**](../Model/.md)|  | [optional]
  **page** | **int**| The collection page number | [optional] [default to 1]
 
 ### Return type
